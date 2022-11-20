@@ -1,0 +1,35 @@
+<!--
+ * @Author: 陈璐璐
+ * @Date: 2022-11-14 08:37:46
+ * @LastEditors: 大路
+ * @LastEditTime: 2022-11-14 08:46:40
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let text = '我是刷子'
+    let utteranc = new SpeechSynthesisUtterance(text)
+    // utteranc.lang = 'zh-CN'
+    utteranc.lang = 'en-US'
+    utteranc.rate = 1.2
+    utteranc.pitch = 1.2
+
+    speechSynthesis.addEventListener('voiceschanged', () => {
+      let voice = speechSynthesis.getVoices()
+      console.log(voice)
+      utteranc.voice = voice[2]
+    })
+
+    document.onclick = () => {
+      speechSynthesis.speak(utteranc)
+    }
+  </script>
+</html>
